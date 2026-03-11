@@ -4,30 +4,25 @@ import { model, Schema } from 'mongoose';
 
 const usersSchema = new Schema(
   {
-
-  name: {
+    name: {
       type: String,
       required: true,
-      
     },
 
     email: {
       type: String,
       required: true,
-       unique: true,
-      
+      unique: true,
     },
 
-      password: {
+    password: {
       type: String,
       required: true,
-        
     },
-      token: {
+    token: {
       type: String,
       default: null,
     },
- 
   },
   {
     timestamps: true,
@@ -40,6 +35,5 @@ usersSchema.methods.toJSON = function () {
   delete obj.password;
   return obj;
 };
-
 
 export const UsersCollection = model('users', usersSchema);
