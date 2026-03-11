@@ -8,7 +8,10 @@
     "lint": "eslint .",
     "start": "node ./src/index.js",
     "dev": "nodemon src/index.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build": "npm run build-docs",
+    "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json",
+    "preview-docs": "redocly preview-docs"
   },
   "keywords": [],
   "author": "Andrii Semenenko <oxonomy14@gmail.com>",
@@ -16,6 +19,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@redocly/cli": "^2.21.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
@@ -31,6 +35,7 @@
     "express": "^5.2.1",
     "joi": "^18.0.2",
     "mongoose": "^9.2.4",
-    "pino-http": "^11.0.0"
+    "pino-http": "^11.0.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }

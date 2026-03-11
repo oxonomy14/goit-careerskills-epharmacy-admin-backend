@@ -1,0 +1,34 @@
+# swagger/components/schemas/customer.yaml
+
+type: object
+required:
+  - _id
+  - photo
+  - name
+  - email
+  - spent
+  - phone
+  - address
+  - register_date
+properties:
+  _id:
+    description: "Customer's id"
+    type: string
+    example: 69af067f8cdf2001c4144e4a
+  name:
+    description: "Customer's name"
+    type: string
+    example: 'Nadia Ivanova'
+  photo: 
+    description: "Customer's photo"
+    type: string
+    example: 'https://i.imgur.com/1As0akH.png1'
+
+
+
+
+
+
+
+
+  

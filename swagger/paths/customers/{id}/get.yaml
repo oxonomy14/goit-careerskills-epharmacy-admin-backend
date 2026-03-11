@@ -1,0 +1,39 @@
+# swagger/paths/customers/{id}/get.yaml
+tags:
+  - Customers
+summary: Get customer by id
+operationId: getCustomer
+description: 'Get customer by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '69af067f8cdf2001c4144e4a'
+responses:
+  '200':
+    description: 'Get customer by id'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found customer with id 69af067f8cdf2001c4144e4a!
+            data:
+              type: object
+              $ref: '../../../components/schemas/customer.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+
