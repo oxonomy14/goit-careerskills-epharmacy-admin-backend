@@ -4,11 +4,14 @@ import { Router } from 'express';
 
 import authRouter from './auth.js';
 import customersRouter from './customers.js';
+import dashboardRouter from './dashboard.js';
 
 const router = Router();
 
 router.use('/api/user', authRouter);
 
 router.use('/api', customersRouter);
+
+router.use('/api', dashboardRouter);
 
 export default router;

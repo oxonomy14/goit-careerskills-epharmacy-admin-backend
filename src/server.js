@@ -7,6 +7,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import router from './routers/index.js';
 import { swaggerDocs } from './middlewares/swaggerDocs.js';
 import { UPLOAD_DIR } from '../constants/index.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 
@@ -15,6 +16,7 @@ export const startServer = () => {
 
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
   app.use(
     pino({
@@ -39,6 +41,8 @@ export const startServer = () => {
     console.log(`Time: ${new Date().toLocaleString()}`);
     next();
   });
+
+  /* Інший код файлу */
 
   app.use(notFoundHandler);
 

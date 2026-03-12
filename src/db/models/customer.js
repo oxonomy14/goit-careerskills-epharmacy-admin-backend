@@ -24,14 +24,17 @@ const customersSchema = new Schema(
 
     spent: {
       type: String,
+      trim: true,
     },
 
     phone: {
       type: String,
+      trim: true,
     },
 
     address: {
       type: String,
+      trim: true,
     },
 
     register_date: {
