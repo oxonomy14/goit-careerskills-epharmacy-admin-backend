@@ -63,6 +63,11 @@ export const loginUser = async (payload) => {
     accessToken: session.accessToken,
     refreshToken: session.refreshToken,
     sessionId: session._id,
+    user: {
+      id: user._id,
+      email: user.email,
+      name: user.name,
+    },
   };
 };
 
@@ -86,6 +91,12 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
     throw createHttpError(401, 'Session token expired');
   }
 
+  const user = await UsersCollection.findById(session.userId);
+
+  if (!user) {
+    throw createHttpError(404, 'User not found');
+  }
+
   const newSessionData = createSession();
 
   await SessionsCollection.deleteOne({
@@ -102,5 +113,10 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
     accessToken: newSession.accessToken,
     refreshToken: newSession.refreshToken,
     sessionId: newSession._id,
+    user: {
+      id: user._id,
+      email: user.email,
+      name: user.name,
+    },
   };
 };
