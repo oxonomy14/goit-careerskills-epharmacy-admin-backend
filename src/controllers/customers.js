@@ -2,9 +2,16 @@
 
 import { getAllCustomers, getCustomerById } from '../services/customers.js';
 import createHttpError from 'http-errors';
+import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 
 export const getCustomersController = async (req, res) => {
-  const customers = await getAllCustomers();
+  const { page, perPage } = parsePaginationParams(req.query);
+  const { name } = req.query;
+  const customers = await getAllCustomers({
+    page,
+    perPage,
+    name,
+  });
 
   res.json({
     status: 200,
